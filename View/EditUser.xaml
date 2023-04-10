@@ -6,23 +6,22 @@
         xmlns:local="clr-namespace:Exam2.View" xmlns:model="clr-namespace:Exam2.Model" d:DataContext="{d:DesignInstance Type=model:DataBinding}"
         mc:Ignorable="d"
         Name="EditUserWnd"
-        Title="Edit user" Height="150" Width="200">
-    <Grid>
+        Title="Edit user name" 
+        Style="{StaticResource WindowOneRow}">
+    <Grid Style="{StaticResource WindowGrid}" >
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackPanel 
-            Grid.Row="0" 
-            Orientation="Vertical" 
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-            <TextBlock Text="User name:"/>
-            <TextBox Text="{Binding UserName}" Width="150" />
+            Style="{StaticResource StackPanelWindow}"
+            Grid.Row="0">
+            <TextBlock Text="User name:" Style="{StaticResource WindowTextBlock}"/>
+            <TextBox Text="{Binding UserName}" Style="{StaticResource WindowTextBox}"/>
         </StackPanel>
         <Button 
+            Style="{DynamicResource SaveBtn}"
             Grid.Row="1" 
-            Content="Save" 
             Command="{Binding EditUser}"
             CommandParameter="{Binding ElementName=EditUserWnd}"
             />

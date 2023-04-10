@@ -25,5 +25,6 @@ namespace Exam2.View
             InitializeComponent();
             DataContext = new DataBinding();
         }
+
     }
 }

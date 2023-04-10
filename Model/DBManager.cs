@@ -148,9 +148,16 @@ namespace Exam2.Model
 
             using (SQLContext db = new SQLContext())
             {
-                db.Users.Remove(User);
-                db.SaveChanges();
-                result = 1 ;            
+                try
+                {
+                    db.Users.Remove(User);
+                    db.SaveChanges();
+                    result = 1;
+                }
+                catch
+                {
+                    result = 0;
+                }
             }
             return result;
         }
@@ -208,9 +215,17 @@ namespace Exam2.Model
 
             using (SQLContext db = new SQLContext())
             {
-                db.Applications.Remove(App);
-                db.SaveChanges();
-                result = 1;
+                try
+                {
+                    db.Applications.Remove(App);
+                    db.SaveChanges();
+                    result = 1;
+                }
+                catch 
+                {
+                    result = 0;
+                }
+
             }
             return result;
 

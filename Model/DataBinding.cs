@@ -90,7 +90,15 @@ namespace Exam2.Model
             newMsgWindow.Owner = Application.Current.MainWindow;
             newMsgWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
             newMsgWindow.ShowDialog();
+        }
 
+        private int ShowMsgBoxOKCancelWindow(string MsgText, string MsgTitle)
+        {
+            MsgBoxOKCancel newMsgWindow = new MsgBoxOKCancel(MsgText, MsgTitle);
+            newMsgWindow.Owner = Application.Current.MainWindow;
+            newMsgWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+            newMsgWindow.ShowDialog();
+            return newMsgWindow.MsgBoxReturn;
         }
         private void OpenAddNewCommentWindow()
         {
@@ -152,6 +160,13 @@ namespace Exam2.Model
         public Events MsgBoxWindow(string TextMsg)
         {
             return msgBoxWindow ?? new Events(obj => { ShowMsgBoxWindow(TextMsg); });
+        }
+
+        private Events msgBoxOKCancelWindow;
+
+        public Events MsgBoxOKCancelWindow(string TextMsg, string TextTitle)
+        {
+            return msgBoxOKCancelWindow ?? new Events(obj => { ShowMsgBoxOKCancelWindow(TextMsg, TextTitle); });
         }
 
         private void OpenEditUserWindow(Users userToEdit)
@@ -216,6 +231,7 @@ namespace Exam2.Model
         #endregion
 
         #region COMMON
+
         public static string? UserName { get; set; }
         public static string? AppName { get; set; }
 
@@ -372,30 +388,36 @@ namespace Exam2.Model
             {
                 return deleteItem ?? new Events(obj =>
                 {
-                    int result = 0;
-                    if (SelectedTabItem.Name == "CommentsTab" && SelectedComment != null)
-                    {
-                        DBManager.DeleteComment(SelectedComment);
-                        result = 1;
-                    }
+                    int result = ShowMsgBoxOKCancelWindow("Are you really delete row ?", "Warning");
 
-                    if (SelectedTabItem.Name == "UsersTab" && SelectedUser != null)
+                    if (result != 0)
                     {
-                        DBManager.DeleteUser(SelectedUser);
-                        result = 1;
-                    }
 
-                    if (SelectedTabItem.Name == "AppTab" && SelectedApp != null)
-                    {
-                        DBManager.DeleteApplication(SelectedApp);
-                        result = 1;
-                    }
+                        if (SelectedTabItem.Name == "CommentsTab" && SelectedComment != null)
+                        {
+                            result = DBManager.DeleteComment(SelectedComment);
+                        }
 
-                    if (result == 1)
-                    {
-                        UpdateAllView();
-                        InitPropsValues();
-                        ShowMsgBoxWindow("Deleted succesifully");
+                        if (SelectedTabItem.Name == "UsersTab" && SelectedUser != null)
+                        {
+                            result = DBManager.DeleteUser(SelectedUser);
+                        }
+
+                        if (SelectedTabItem.Name == "AppTab" && SelectedApp != null)
+                        {
+                            result = DBManager.DeleteApplication(SelectedApp);
+                        }
+
+                        if (result == 1)
+                        {
+                            UpdateAllView();
+                            InitPropsValues();
+                            ShowMsgBoxWindow("Deleted succesifully");
+                        }
+                        else
+                        {
+                            ShowMsgBoxWindow("Deletion Error !");
+                        }
                     }
                 }
                 );

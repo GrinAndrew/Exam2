@@ -5,20 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Exam2.View"
         mc:Ignorable="d"
-        Title="MessageBox" Height="100" Width="300">
-    <Grid>
+        Title="Warning ! " 
+        Style="{StaticResource WindowBase}"
+        Height="150" 
+        Width="300">
+    <Grid 
+        Style="{StaticResource WindowGrid}"
+        Width="300">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <TextBlock 
             Grid.Row="0" 
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
+            Style="{StaticResource MsgboxTextBlock}"
             TextWrapping="Wrap"
-            Name="MsgText"/>
-        <Button Grid.Row="1" Content="Ok" Click="Button_Click"/>
+            Width="290"
+            Name="MsgText" Height="40"/>
+        <Button 
+            Style="{DynamicResource Base}"
+            Grid.Row="1" 
+            Content="Ok" 
+            Click="Button_Click" 
+            VerticalAlignment="Top"
+            Width="100"/>
 
     </Grid>
-    
+
 </Window>

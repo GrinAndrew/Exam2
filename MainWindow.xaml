@@ -7,13 +7,17 @@
         mc:Ignorable="d"
         Title="Main window" Height="450" Width="800"
         >
-    <Grid >
+    
+    <Grid 
+        Style="{StaticResource MainGrid}" >
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <TabControl 
+            Loaded="Tab_Loaded"
+            Background="#F8F8F2"
             Grid.Row="0"
             SelectedItem="{Binding SelectedTabItem}"
             x:Name="Tab"
@@ -93,9 +97,9 @@
         <StackPanel Grid.Row="1"
             Orientation="Horizontal"
             HorizontalAlignment="Right">
-            <Button Content="Add new comment" Command="{Binding OpenAddNewComment}" />
-            <Button Content="Add new user" Command="{Binding OpenAddNewUser}"/>
-            <Button Content="Add new application" Command="{Binding OpenAddNewApp}"/>
+            <Button Content="Add new comment" Command="{Binding OpenAddNewComment}" Style="{StaticResource Base}"/>
+            <Button Content="Add new user" Command="{Binding OpenAddNewUser}" Style="{StaticResource Base}"/>
+            <Button Content="Add new application" Command="{Binding OpenAddNewApp}" Style="{StaticResource Base}"/>
             
         </StackPanel>
     </Grid>

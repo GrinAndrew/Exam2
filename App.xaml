@@ -4,6 +4,76 @@
              xmlns:local="clr-namespace:Exam2"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <Style TargetType="ListViewItem">
+            <Setter Property="Background" Value="#F8F8F2" />
+        </Style>
+
+        <Style TargetType="ListView">
+            <Setter Property="Background" Value="#F8F8F2" />
+        </Style>
+
+        <Style TargetType="Window" x:Key="WindowBase">
+            <Setter Property="Background" Value="#F8F8F2" />
+        </Style>
+
+        <Style TargetType="Window" x:Key="WindowOneRow" BasedOn="{StaticResource WindowBase}">
+            <Setter Property="Height" Value="120" />
+            <Setter Property="Width" Value="230"/>
+
+        </Style>
+
+        <Style TargetType="Grid" x:Key="MainGrid">
+            <Setter Property="Background" Value="#F8F8F2"/>
+        </Style>
+
+        <Style TargetType="Grid" x:Key="WindowGrid" BasedOn="{StaticResource MainGrid}">
+            <Setter Property="Width" Value="200"/>
+        </Style>
+        
+        <Style TargetType="StackPanel" x:Key="StackPanelWindow">
+            <Setter Property="Background" Value="#F8F8F2" />
+            <Setter Property="Orientation" Value="Vertical" />
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="200"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="Base">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="#6272a4" />
+            <Setter Property="Foreground" Value="#F8F8F2" />
+            <Setter Property="Margin" Value="3" />
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="Button" BasedOn="{StaticResource Base}" x:Key="SaveBtn">
+            <Setter Property="Width" Value="190"/>
+            <Setter Property="Content" Value="Save"/>
+        </Style>
+        
+        <Style TargetType="ComboBox" x:Key="ComboBoxBase">
+            <Setter Property="Background" Value="#F8F8F2" />
+            <Setter Property="Width" Value="190"/>
+        </Style>
+
+        <Style TargetType="TextBox" x:Key="WindowTextBox">
+            <Setter Property="Width" Value="190"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="WindowTextBlock">
+            <Setter Property="Width" Value="190"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="MsgboxTextBlock">
+            <Setter Property="Width" Value="190"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
     </Application.Resources>
 </Application>

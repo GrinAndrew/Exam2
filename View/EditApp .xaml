@@ -8,23 +8,28 @@
         d:DataContext="{d:DesignInstance Type=model:DataBinding}"
         mc:Ignorable="d"
         x:Name="EditAppWnd"
-        Title="Edit application" Height="150" Width="200">
-    <Grid>
+        Title="Edit application" 
+        Style="{StaticResource WindowOneRow}">
+    <Grid Style="{StaticResource WindowGrid}" >
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackPanel 
+            Style="{StaticResource StackPanelWindow}"
             Grid.Row="0" 
-            Orientation="Vertical" 
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-            <TextBlock Text="Application name:"/>
-            <TextBox Text="{Binding AppName}" Width="150"/>
+            Orientation="Vertical">
+
+            <TextBlock 
+                Text="Application name:" 
+                Style="{StaticResource WindowTextBlock}"/>
+            <TextBox 
+                Text="{Binding AppName}" 
+                Style="{StaticResource WindowTextBox}"/>
         </StackPanel>
         <Button 
+            Style="{DynamicResource SaveBtn}"
             Grid.Row="1" 
-            Content="Save" 
             Command="{Binding EditApp}"
             CommandParameter="{Binding ElementName=EditAppWnd}"/>
         

@@ -31,8 +31,13 @@ namespace Exam2
 
             AllUsersView = UsersListView;
             AllAppView = AppListView;
-            AllCommentsView = CommentsListView;
+            AllCommentsView = CommentsListView;           
 
+        }
+
+        private void Tab_Loaded(object sender, RoutedEventArgs e)
+        {
+            Tab.SelectedIndex = 0;
         }
     }
 }

@@ -6,41 +6,57 @@
         xmlns:local="clr-namespace:Exam2.View" xmlns:model="clr-namespace:Exam2.Model" d:DataContext="{d:DesignInstance Type=model:DataBinding}"
         mc:Ignorable="d"
         Name="EditCommentWnd"
-        Title="EditComment" Height="200" Width="300">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
-        </Grid.RowDefinitions>
-        <StackPanel 
-            Grid.Row="0" 
-            Orientation="Vertical" 
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Width="200" Height="124">
+        Title="Edit comment ..." 
+        Height="250" 
+        Width="230"
+        Style="{StaticResource WindowBase}" >
 
-            <TextBlock Text="Application:"/>
-            <ComboBox
+    <Grid 
+        Height="220"
+        HorizontalAlignment="Center"
+        Style="{StaticResource WindowGrid}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="152"/>
+            <RowDefinition Height="68"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width ="200"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel 
+            Style="{StaticResource StackPanelWindow}">
+
+            <TextBlock Text="Application name:" Width="190"/>
+            <ComboBox 
+                Loaded="AppCombo_Loaded"
+                Style="{StaticResource ComboBoxBase}"
                 ItemsSource="{Binding AllApplications}"
                 SelectedItem="{Binding CommentApp}"
                 DisplayMemberPath="Name"
-                x:Name="AppCombo"           
-                />
-            <TextBlock Text="User:"/>
+                x:Name="AppCombo"/>
+            <TextBlock Text="User name:" Width="190"/>
             <ComboBox
+                Style="{StaticResource ComboBoxBase}"
                 ItemsSource="{Binding AllUsers}"
                 SelectedItem="{Binding CommentUser}"
                 x:Name="UserCombo"
-                DisplayMemberPath="Name"               
+                DisplayMemberPath="Name"
+                Loaded="UserCombo_Loaded"
                 />
-            <TextBlock Text="Comment:"/>
-            <TextBox Text="{Binding CommentText}" TextWrapping="Wrap" Height="30" />
+            <TextBlock Text="Comment:" Style="{StaticResource WindowTextBlock}" />
+            <TextBox 
+                Text="{Binding CommentText}" 
+                Style="{StaticResource WindowTextBox}"
+                TextWrapping="Wrap" 
+                x:Name="txtComment"
+                Height="50" />
         </StackPanel>
         <Button 
-            Grid.Row="1" 
-            Content="Save" 
             Command="{Binding EditComment}"
             CommandParameter="{Binding ElementName=EditCommentWnd}"
+            Grid.Row="1" 
+            Grid.Column="0" 
+            Style="{StaticResource SaveBtn}"
+            Margin="5,0,5,0"
             />
         
     </Grid>

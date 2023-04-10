@@ -3,53 +3,70 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Exam2.View" xmlns:model="clr-namespace:Exam2.Model" d:DataContext="{d:DesignInstance Type=model:DataBinding}"
+        xmlns:local="clr-namespace:Exam2.View" 
+        xmlns:model="clr-namespace:Exam2.Model" 
+        d:DataContext="{d:DesignInstance Type=model:DataBinding}"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Name="AddNewCommentWnd"
-        Title="AddNewComment" Height="230" Width="300">
-    <Grid Margin="0,0,0,-10">
+        Title="Add new comment ..."
+        Height="250" 
+        Width="230"
+        Style="{StaticResource WindowBase}" >
+    <Grid 
+        Height="220"
+        HorizontalAlignment="Center"
+        Style="{StaticResource WindowGrid}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="120"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="152"/>
+            <RowDefinition Height="68"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width ="50"/>
             <ColumnDefinition Width ="200"/>
-            <ColumnDefinition Width ="50"/>
         </Grid.ColumnDefinitions>
-        <StackPanel 
-            Grid.Row="0"
-            Grid.Column="1"
-            Orientation="Vertical" 
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Width="200" Height="120">
-            <TextBlock Text="Application name:"/>
+        <StackPanel
+            Style="{StaticResource StackPanelWindow}" Height="142" Width="200">
+
+            <TextBlock 
+                Text="Application name:" 
+                Style="{StaticResource WindowTextBlock}"/>
             <ComboBox 
+                Style="{StaticResource ComboBoxBase}"
+                Width="190"
                 ItemsSource="{Binding AllApplications}"
                 SelectedItem="{Binding CommentApp}"
                 DisplayMemberPath="Name"
                 x:Name="AppCombo"
                 />
-            <TextBlock Text="User name:"/>
+            <TextBlock 
+                Text="User name:"
+                Style="{StaticResource WindowTextBlock}"/>
             <ComboBox
+                Style="{StaticResource ComboBoxBase}"
                 ItemsSource="{Binding AllUsers}"
                 SelectedItem="{Binding CommentUser}"
                 x:Name="UserCombo"
                 DisplayMemberPath="Name"
                 />
-            <TextBlock Text="Comment:"/>
-            <TextBox Text="{Binding Comment}" TextWrapping="Wrap" x:Name="txtComment"/>
+            <TextBlock 
+                Text="Comment:" 
+                Style="{StaticResource WindowTextBlock}"/>
+            <TextBox 
+                Text="{Binding Comment}" 
+                Style="{StaticResource WindowTextBox}"
+                TextWrapping="Wrap" 
+                x:Name="txtComment"
+                Height="50" />
         </StackPanel>
+
         <Button 
-            Grid.Row="1" 
-            Grid.Column="1" 
-            Content="Save" 
-            Height="50" 
-            VerticalAlignment="Bottom"
             Command="{Binding AddNewComment}"
-            CommandParameter="{Binding ElementName=AddNewCommentWnd}"/>
-        
+            CommandParameter="{Binding ElementName=AddNewCommentWnd}" 
+            Grid.Row="1" 
+            Grid.Column="0" 
+            Style="{StaticResource SaveBtn}"
+            Margin="5,0,5,0"
+            />
+
     </Grid>
 </Window>

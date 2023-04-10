@@ -28,5 +28,43 @@ namespace Exam2.View
             DataBinding.CommentText = commentToEdit.CommentText;
 
         }
+
+        private void AppCombo_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (DataBinding.SelectedComment != null)
+            {
+
+                int i = 0;
+                foreach (Applications item in AppCombo.Items)
+                {
+                    if (item.ID == DataBinding.SelectedComment.ApplicationID)
+                    {
+                        AppCombo.SelectedIndex = i;
+                        return;
+                    }
+                    i++;
+
+                }
+            }
+        }
+
+        private void UserCombo_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (DataBinding.SelectedComment != null)
+            {
+                int i = 0;
+                foreach (Users item in UserCombo.Items)
+                {
+                    if (item.ID == DataBinding.SelectedComment.UserID)
+                    {
+                        UserCombo.SelectedIndex = i;
+                        return;
+                    }
+                    i++;
+
+                }
+            }
+
+        }
     }
 }

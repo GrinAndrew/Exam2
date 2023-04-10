@@ -6,23 +6,28 @@
         xmlns:local="clr-namespace:Exam2.View" xmlns:model="clr-namespace:Exam2.Model" d:DataContext="{d:DesignInstance Type=model:DataBinding}"
         mc:Ignorable="d"
         Name="AddNewAppWnd"
-        Title="AddNewApp" Height="150" Width="200">
-    <Grid>
+        Title="Add new applicaition name" 
+        Style="{StaticResource WindowOneRow}"
+        >
+    <Grid
+        Style="{StaticResource WindowGrid}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackPanel 
-            Grid.Row="0" 
-            Orientation="Vertical" 
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-            <TextBlock Text="Application name:"/>
-            <TextBox Width="150" x:Name="txtAppName" Text="{Binding AppName}"/>
+            Style="{StaticResource StackPanelWindow}">
+            <TextBlock 
+                Style="{StaticResource WindowTextBlock}"
+                Text="Application name:"/>
+            <TextBox 
+                Style="{StaticResource WindowTextBox}"
+                x:Name="txtAppName" 
+                Text="{Binding AppName}"/>
         </StackPanel>
-        <Button             
+        <Button            
             Grid.Row="1" 
-            Content="Save" 
+            Style="{StaticResource SaveBtn}"
             Command="{Binding AddNewApp}"
             CommandParameter="{Binding ElementName=AddNewAppWnd}"/>
     </Grid>
